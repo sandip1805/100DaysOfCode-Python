@@ -24,6 +24,18 @@ class LinkedList:
         while (temp):
             print(temp.data, end = ' ')
             temp = temp.next
+
+    def reverse(self):
+        print('\nreversing elements\n')
+        prev = None
+        next = None
+        current = self.head
+        while (current):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
     
     def delete(self, data):
         # reference head in temporary variable
@@ -66,5 +78,8 @@ if __name__=='__main__':
     llist.print()
     llist.delete(3)
     print('\n---------------------')
+    llist.add(15)
+    llist.print()
+    llist.reverse()
     llist.print()
 
