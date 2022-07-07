@@ -1,4 +1,7 @@
 #Node class
+from sniffio import current_async_library
+
+
 class Node:
     # Function to initialize the node object
     def __init__(self, data) -> None:
@@ -36,6 +39,29 @@ class LinkedList:
             prev = current
             current = next
         self.head = prev
+
+    
+    def reverseRecursive(self):
+        print('\n Recursive Reverse\n')
+        # Call a recursiveReverse function with passing global head here.
+        self.recursiveReverse(self.head)
+
+    def recursiveReverse(self, curr):
+        # Exit Condition for recursion, otherwise it will go into conitnuos loop,
+        # if next is none, we are at the last node and we can assing head to that node
+        if (curr.next == None):
+            self.head = curr
+        else:
+            # Before starting recursion, always take previous node as a reference so that after recursive
+            # call we can assing next node to previous one to reverse element
+            prev = curr
+            curr = curr.next
+            self.recursiveReverse(curr)
+            # one out of recursion, assign next as a prev and set prev.next as none otherwise it has a refrence of earlier state
+            curr.next = prev
+            prev.next = None
+
+
     
     def delete(self, data):
         # reference head in temporary variable
@@ -81,5 +107,15 @@ if __name__=='__main__':
     llist.add(15)
     llist.print()
     llist.reverse()
+    llist.print()
+
+    print('\n---------------------')
+    llist.reverseRecursive()
+    llist.print()
+
+    print('\n---------------------')
+    llist.add(18)
+    llist.print()
+    llist.reverseRecursive()
     llist.print()
 
