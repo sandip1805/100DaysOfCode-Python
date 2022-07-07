@@ -27,6 +27,7 @@ class Stack:
 
 if __name__ == '__main__':
     stack = Stack()
+    for i in range(0, 99):
+        stack.push(i)
     stack.push(1)
-    stack.push(2)
     stack.printStack()
