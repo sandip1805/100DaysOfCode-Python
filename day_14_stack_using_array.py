@@ -7,7 +7,7 @@ class Stack:
     def push(self, data):
         if (self.top == self.maxSize-1):
             raise Exception("Stack overflow!")
-        self.top += 1
+        self.top += 1        
         self.data[self.top] = data
     
     def pop(self):
