@@ -60,7 +60,30 @@ class BinarySearchTree:
             self.__inorder(root.right)
         
     def printInOrder(self):
+        print('In order travel')
         self.__inorder(self.root)
+        print('\n')
+
+    def __pre_order(self, root):
+        if root:
+            print(root.data, end = ' ')
+            self.__pre_order(root.left)
+            self.__pre_order(root.right)
+    
+    def print_pre_order(self):
+        print('Pre order travel')
+        self.__pre_order(self.root)
+        print('\n')
+
+    def __post_order(self, root):
+        if root:            
+            self.__post_order(root.left)
+            self.__post_order(root.right)
+            print(root.data, end = ' ')
+    
+    def print_post_order(self):
+        print('Post order travel')
+        self.__post_order(self.root)
         print('\n')
 
 
@@ -79,6 +102,8 @@ if __name__ == "__main__":
     bst.insert(4)
     bst.insert(21)
     bst.printInOrder()
+    bst.print_pre_order()
+    bst.print_post_order()
     print(f'Search data: {bst.search(13).data}')
     print(f'Find minimum data: {bst.findMin()}')
     print(f'Find height of BST: {bst.findHeight()}')
