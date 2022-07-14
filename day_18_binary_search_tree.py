@@ -86,6 +86,22 @@ class BinarySearchTree:
         self.__post_order(self.root)
         print('\n')
 
+    def print_level_order(self):
+        print('Level order travel')
+        if (self.root == None):
+            return
+        queue = []
+        queue.append(self.root)
+        while (len(queue) > 0):
+            current = queue.pop(0)
+            print(current.data, end = ' ')
+            if (current.left != None):
+                queue.append(current.left)
+            if (current.right != None):
+                queue.append(current.right)
+        print('\n')
+                
+
 
 if __name__ == "__main__":
     print("Binary Search Tree!!!")
@@ -104,6 +120,7 @@ if __name__ == "__main__":
     bst.printInOrder()
     bst.print_pre_order()
     bst.print_post_order()
+    bst.print_level_order()
     print(f'Search data: {bst.search(13).data}')
     print(f'Find minimum data: {bst.findMin()}')
     print(f'Find height of BST: {bst.findHeight()}')
